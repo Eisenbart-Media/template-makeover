@@ -81,13 +81,13 @@ export const AboutSection = ({
             )}
           </div>
 
-          {/* Decorative Elements */}
+          {/* Decorative Elements - Hidden on mobile to prevent overflow */}
           <div
-            className="absolute -bottom-4 -right-4 w-32 h-32 bg-[var(--template-secondary)]/20 rounded-lg -z-10"
+            className="hidden sm:block absolute -bottom-4 -right-4 w-32 h-32 bg-[var(--template-secondary)]/20 rounded-lg -z-10"
             aria-hidden="true"
           />
           <div
-            className="absolute -top-4 -left-4 w-24 h-24 border-2 border-[var(--template-primary)]/20 rounded-lg -z-10"
+            className="hidden sm:block absolute -top-4 -left-4 w-24 h-24 border-2 border-[var(--template-primary)]/20 rounded-lg -z-10"
             aria-hidden="true"
           />
         </div>

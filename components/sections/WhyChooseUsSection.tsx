@@ -85,17 +85,18 @@ const FeatureCard = ({ feature }: { feature: Feature }) => {
       {/* Icon Container */}
       <div
         className={cn(
-          "w-16 h-16 mx-auto mb-5 rounded-full flex items-center justify-center",
+          "w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-5 rounded-full flex items-center justify-center",
           "bg-[var(--template-primary)]/10 text-[var(--template-primary)]",
           "group-hover:bg-[var(--template-primary)] group-hover:text-white",
-          "transition-all duration-300 ease-out"
+          "transition-all duration-300 ease-out",
+          "[&>svg]:w-6 [&>svg]:h-6 sm:[&>svg]:w-7 sm:[&>svg]:h-7"
         )}
       >
         {feature.icon}
       </div>
 
       {/* Title */}
-      <h3 className="text-lg font-semibold text-slate-900 mb-2">{feature.title}</h3>
+      <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-2">{feature.title}</h3>
 
       {/* Description */}
       <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
@@ -141,7 +142,7 @@ export const WhyChooseUsSection = ({
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-8 sm:gap-y-12">
           {displayFeatures.map((feature) => (
             <FeatureCard key={feature.id} feature={feature} />
           ))}
@@ -150,4 +151,7 @@ export const WhyChooseUsSection = ({
     </SectionWrapper>
   );
 };
+
+
+
 

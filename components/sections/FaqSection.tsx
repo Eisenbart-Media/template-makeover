@@ -80,15 +80,16 @@ const AccordionItem = ({
       <button
         onClick={onToggle}
         className={cn(
-          "w-full flex items-center justify-between gap-4 py-6 px-6 text-left",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--template-primary)] focus-visible:ring-offset-2 rounded-sm"
+          "w-full flex items-center justify-between gap-3 sm:gap-4 py-4 sm:py-6 px-4 sm:px-6 text-left",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--template-primary)] focus-visible:ring-offset-2 rounded-sm",
+          "min-h-[56px] active:bg-slate-50/80"
         )}
         aria-expanded={isOpen}
         tabIndex={0}
       >
         <span
           className={cn(
-            "text-base font-medium transition-colors duration-200",
+            "text-sm sm:text-base font-medium transition-colors duration-200 pr-2",
             isOpen ? "text-[var(--template-primary)]" : "text-slate-900"
           )}
         >
@@ -98,7 +99,7 @@ const AccordionItem = ({
         {/* Toggle Icon */}
         <span
           className={cn(
-            "flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center",
+            "flex-shrink-0 w-7 h-7 sm:w-6 sm:h-6 rounded-full flex items-center justify-center",
             "transition-all duration-300 ease-out",
             isOpen
               ? "bg-[var(--template-primary)] text-white rotate-180"
@@ -126,7 +127,7 @@ const AccordionItem = ({
         className="overflow-hidden transition-all duration-300 ease-out"
         style={{ height }}
       >
-        <div ref={contentRef} className="pb-6 px-6">
+        <div ref={contentRef} className="pb-5 sm:pb-6 px-4 sm:px-6">
           <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
         </div>
       </div>

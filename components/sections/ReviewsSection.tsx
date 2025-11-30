@@ -65,19 +65,19 @@ const ReviewCard = ({
     shouldTruncate && !expanded ? `${review.text.slice(0, 180)}...` : review.text;
 
   return (
-    <article className="bg-white rounded-lg border border-slate-100 p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+    <article className="bg-white rounded-xl border border-slate-100 p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
       {/* Header */}
-      <div className="flex items-start gap-4 mb-4">
+      <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
         {/* Avatar */}
         <div className="flex-shrink-0">
           {review.profilePhoto ? (
             <img
               src={review.profilePhoto}
               alt={review.author}
-              className="w-12 h-12 rounded-full object-cover"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
             />
           ) : (
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--template-primary)] to-[var(--template-secondary)] flex items-center justify-center text-white font-semibold text-lg">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[var(--template-primary)] to-[var(--template-secondary)] flex items-center justify-center text-white font-semibold text-base sm:text-lg">
               {review.author.charAt(0).toUpperCase()}
             </div>
           )}
@@ -85,15 +85,15 @@ const ReviewCard = ({
 
         {/* Author Info */}
         <div className="flex-1 min-w-0">
-          <h4 className="font-semibold text-slate-900 truncate">{review.author}</h4>
-          <div className="flex items-center gap-2 mt-1">
+          <h4 className="font-semibold text-slate-900 truncate text-sm sm:text-base">{review.author}</h4>
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-0.5 sm:mt-1">
             <StarRating rating={review.rating} size="sm" />
             <span className="text-slate-400 text-xs">{review.date}</span>
           </div>
         </div>
 
         {/* Google Icon */}
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 hidden sm:block">
           <svg
             className="w-6 h-6 text-slate-300"
             viewBox="0 0 24 24"
@@ -125,7 +125,7 @@ const ReviewCard = ({
       {shouldTruncate && (
         <button
           onClick={onToggle}
-          className="mt-2 text-[var(--template-primary)] text-sm font-medium hover:underline focus:outline-none focus:underline"
+          className="mt-3 text-[var(--template-primary)] text-sm font-medium hover:underline focus:outline-none focus:underline min-h-[44px] -mb-2 flex items-center"
           tabIndex={0}
           aria-expanded={expanded}
         >
@@ -176,20 +176,22 @@ export const ReviewsSection = ({
         </p>
 
         {/* Overall Rating */}
-        <div className="flex items-center justify-center gap-4 mt-6 p-4 bg-white rounded-lg shadow-sm inline-flex mx-auto">
-          <div className="text-center pr-4 border-r border-slate-200">
-            <div className="text-3xl font-bold text-slate-900">{averageRating}</div>
-            <StarRating rating={averageRating} size="sm" />
-          </div>
-          <div className="text-left">
-            <div className="text-sm font-medium text-slate-900">Google Rating</div>
-            <div className="text-xs text-slate-500">{totalReviews} reviews</div>
+        <div className="flex justify-center mt-6">
+          <div className="flex items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-white rounded-xl shadow-sm border border-slate-100">
+            <div className="text-center pr-3 sm:pr-4 border-r border-slate-200">
+              <div className="text-2xl sm:text-3xl font-bold text-slate-900">{averageRating}</div>
+              <StarRating rating={averageRating} size="sm" />
+            </div>
+            <div className="text-left">
+              <div className="text-sm font-medium text-slate-900">Google Rating</div>
+              <div className="text-xs text-slate-500">{totalReviews} reviews</div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Reviews Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-10">
         {displayReviews.slice(0, 3).map((review) => (
           <ReviewCard
             key={review.id}

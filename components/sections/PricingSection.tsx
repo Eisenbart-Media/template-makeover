@@ -85,7 +85,7 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
         "relative rounded-xl overflow-hidden",
         "flex flex-col h-full",
         plan.popular
-          ? "bg-gradient-to-b from-[var(--template-primary)] to-[var(--template-primary)]/90 text-white shadow-xl scale-105 z-10"
+          ? "bg-gradient-to-b from-[var(--template-primary)] to-[var(--template-primary)]/90 text-white shadow-xl lg:scale-105 z-10 ring-4 ring-[var(--template-primary)]/20"
           : "bg-white border border-slate-200 text-slate-900 shadow-sm"
       )}
     >
@@ -98,11 +98,11 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
         </div>
       )}
 
-      <div className={cn("p-6 lg:p-8 flex flex-col flex-1", plan.popular && "pt-10")}>
+      <div className={cn("p-5 sm:p-6 lg:p-8 flex flex-col flex-1", plan.popular && "pt-8 sm:pt-10")}>
         {/* Plan Name */}
         <h3
           className={cn(
-            "text-xl font-bold mb-1",
+            "text-lg sm:text-xl font-bold mb-1",
             plan.popular ? "text-white" : "text-slate-900"
           )}
         >
@@ -113,7 +113,7 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
         {plan.description && (
           <p
             className={cn(
-              "text-sm mb-4",
+              "text-sm mb-3 sm:mb-4",
               plan.popular ? "text-white/80" : "text-slate-600"
             )}
           >
@@ -122,10 +122,10 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
         )}
 
         {/* Price */}
-        <div className="mb-6">
+        <div className="mb-5 sm:mb-6">
           <span
             className={cn(
-              "text-4xl font-bold",
+              "text-3xl sm:text-4xl font-bold",
               plan.popular ? "text-white" : "text-slate-900"
             )}
           >
@@ -144,9 +144,9 @@ const PricingCard = ({ plan }: { plan: PricingPlan }) => {
         </div>
 
         {/* Features */}
-        <ul className="space-y-3 mb-8 flex-1">
+        <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8 flex-1">
           {plan.features.map((feature, index) => (
-            <li key={index} className="flex items-start gap-3">
+            <li key={index} className="flex items-start gap-2.5 sm:gap-3">
               <svg
                 className={cn(
                   "w-5 h-5 flex-shrink-0 mt-0.5",
@@ -226,12 +226,12 @@ export const PricingSection = ({
       {/* Pricing Cards */}
       <div
         className={cn(
-          "grid gap-6 lg:gap-0 items-stretch",
+          "grid gap-4 sm:gap-6 lg:gap-2 items-stretch",
           displayPlans.length === 2
-            ? "grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto"
+            ? "grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto"
             : displayPlans.length === 3
-            ? "grid-cols-1 md:grid-cols-3 max-w-5xl mx-auto"
-            : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+            ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto"
+            : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
         )}
       >
         {displayPlans.map((plan) => (
@@ -257,4 +257,6 @@ export const PricingSection = ({
     </SectionWrapper>
   );
 };
+
+
 

@@ -80,8 +80,9 @@ const ImageCard = ({
     <button
       onClick={onClick}
       className={cn(
-        "group relative overflow-hidden rounded-lg aspect-square",
-        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--template-primary)] focus-visible:ring-offset-2"
+        "group relative overflow-hidden rounded-lg sm:rounded-xl aspect-square",
+        "focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--template-primary)] focus-visible:ring-offset-2",
+        "active:scale-[0.98] transition-transform"
       )}
       tabIndex={0}
       aria-label={`View ${image.alt}`}
@@ -96,18 +97,18 @@ const ImageCard = ({
         <PlaceholderImage index={index} category={image.category} />
       )}
 
-      {/* Overlay */}
+      {/* Overlay - Always visible on mobile for better UX */}
       <div
         className={cn(
           "absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent",
-          "opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-          "flex items-end justify-between p-4"
+          "sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300",
+          "flex items-end justify-between p-2 sm:p-4"
         )}
       >
-        <span className="text-white font-medium text-sm">{image.alt}</span>
-        <span className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+        <span className="text-white font-medium text-xs sm:text-sm truncate mr-2">{image.alt}</span>
+        <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white flex-shrink-0">
           <svg
-            className="w-5 h-5"
+            className="w-4 h-4 sm:w-5 sm:h-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -124,8 +125,8 @@ const ImageCard = ({
 
       {/* Category Badge */}
       {image.category && (
-        <div className="absolute top-3 left-3">
-          <span className="px-2 py-1 text-xs font-medium bg-white/90 backdrop-blur-sm rounded text-slate-700">
+        <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
+          <span className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs font-medium bg-white/90 backdrop-blur-sm rounded text-slate-700">
             {image.category}
           </span>
         </div>
@@ -257,14 +258,14 @@ export const GallerySection = ({
 
       {/* Category Filter */}
       {uniqueCategories.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8 px-1">
           <button
             onClick={() => setActiveCategory(null)}
             className={cn(
-              "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200",
+              "px-3 sm:px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 min-h-[44px]",
               activeCategory === null
-                ? "bg-[var(--template-primary)] text-white"
-                : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+                ? "bg-[var(--template-primary)] text-white shadow-md"
+                : "bg-white text-slate-600 hover:bg-slate-100 active:bg-slate-200 border border-slate-200"
             )}
             tabIndex={0}
           >
@@ -275,10 +276,10 @@ export const GallerySection = ({
               key={category}
               onClick={() => setActiveCategory(category)}
               className={cn(
-                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200",
+                "px-3 sm:px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-200 min-h-[44px]",
                 activeCategory === category
-                  ? "bg-[var(--template-primary)] text-white"
-                  : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+                  ? "bg-[var(--template-primary)] text-white shadow-md"
+                  : "bg-white text-slate-600 hover:bg-slate-100 active:bg-slate-200 border border-slate-200"
               )}
               tabIndex={0}
             >
@@ -289,7 +290,7 @@ export const GallerySection = ({
       )}
 
       {/* Gallery Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4">
         {filteredImages.map((image, index) => (
           <ImageCard
             key={image.id}
@@ -307,4 +308,7 @@ export const GallerySection = ({
     </SectionWrapper>
   );
 };
+
+
+
 

@@ -91,7 +91,7 @@ const ServiceCard = ({ service }: { service: Service }) => {
   return (
     <article
       className={cn(
-        "group relative bg-white rounded-lg border border-slate-100 p-6",
+        "group relative bg-white rounded-xl border border-slate-100 p-5 sm:p-6",
         "shadow-sm hover:shadow-lg hover:border-[var(--template-primary)]/20",
         "transition-all duration-300 ease-out"
       )}
@@ -99,17 +99,18 @@ const ServiceCard = ({ service }: { service: Service }) => {
       {/* Icon */}
       <div
         className={cn(
-          "w-14 h-14 rounded-lg flex items-center justify-center mb-5",
+          "w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4 sm:mb-5",
           "bg-[var(--template-primary)]/10 text-[var(--template-primary)]",
           "group-hover:bg-[var(--template-primary)] group-hover:text-white",
-          "transition-colors duration-300"
+          "transition-colors duration-300",
+          "[&>svg]:w-6 [&>svg]:h-6 sm:[&>svg]:w-8 sm:[&>svg]:h-8"
         )}
       >
         {service.icon}
       </div>
 
       {/* Title */}
-      <h3 className="text-lg font-semibold text-slate-900 mb-2">{service.title}</h3>
+      <h3 className="text-base sm:text-lg font-semibold text-slate-900 mb-2">{service.title}</h3>
 
       {/* Description */}
       <p className="text-slate-600 text-sm leading-relaxed mb-4">
@@ -117,7 +118,7 @@ const ServiceCard = ({ service }: { service: Service }) => {
       </p>
 
       {/* Price / CTA */}
-      <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+      <div className="flex items-center justify-between mt-auto pt-3 sm:pt-4 border-t border-slate-100">
         {service.price && (
           <span className="text-[var(--template-primary)] font-semibold text-sm">
             {service.price}
@@ -126,7 +127,7 @@ const ServiceCard = ({ service }: { service: Service }) => {
         {service.href ? (
           <a
             href={service.href}
-            className="group text-sm font-medium text-slate-600 hover:text-[var(--template-primary)] transition-colors inline-flex items-center gap-1"
+            className="group text-sm font-medium text-slate-600 hover:text-[var(--template-primary)] transition-colors inline-flex items-center gap-1 min-h-[44px] py-2"
             tabIndex={0}
           >
             Learn More
@@ -167,7 +168,7 @@ export const ServicesSection = ({
       </div>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {displayServices.map((service) => (
           <ServiceCard key={service.id} service={service} />
         ))}
